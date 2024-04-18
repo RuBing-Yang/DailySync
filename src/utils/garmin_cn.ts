@@ -17,7 +17,7 @@ import { getSessionFromDB, initDB, saveSessionToDB, updateSessionToDB } from './
 const CryptoJS = require('crypto-js');
 const fs = require('fs');
 
-const { GarminConnect } = require('garmin-connect');
+const { GarminConnect } = require('@gooin/garmin-connect-cn');
 
 const GARMIN_USERNAME = process.env.GARMIN_USERNAME ?? GARMIN_USERNAME_DEFAULT;
 const GARMIN_PASSWORD = process.env.GARMIN_PASSWORD ?? GARMIN_PASSWORD_DEFAULT;
