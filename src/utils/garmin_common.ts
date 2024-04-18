@@ -28,8 +28,8 @@ export const uploadGarminActivity = async (fitFilePath: string, client: GarminCl
     } else if (!fs.existsSync(fitFilePath)) {
         console.warn("file path not exist!");
     } else {
-        const fileStat = fs.statSync("myfile.txt");
-        var fileSizeMb = fileStat.size / (1024*1024);
+        const fileStat = fs.statSync(fitFilePath);
+        const fileSizeMb = fileStat.size / (1024*1024);
         console.log(`下载文件夹 ${DOWNLOAD_DIR}，下载文件地址 ${fitFilePath}，文件大小 ${fileSizeMb} Mb`);
 
         const upload = await client.uploadActivity(fitFilePath);
