@@ -64,4 +64,3 @@ export const STRAVA_CLIENT_ID_DEFAULT = '';
 export const STRAVA_CLIENT_SECRET_DEFAULT = '';
 export const STRAVA_REDIRECT_URI_DEFAULT = '';
 
-
