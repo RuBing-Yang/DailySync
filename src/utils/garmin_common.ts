@@ -34,9 +34,9 @@ export const uploadGarminActivity = async (fitFilePath: string, client: GarminCl
 
         const upload = await client.uploadActivity(fitFilePath);
         console.log('upload to garmin activity', upload);
-        const activityId = upload.detailedImportResult.successes[0].internalId;
-        const uploadId = upload.detailedImportResult.uploadId;
-        console.log(`上传活动ID ${activityId}，上传ID ${upload}`);
+        // const activityId = upload.detailedImportResult.successes[0].internalId;
+        // const uploadId = upload.detailedImportResult.uploadId;
+        // console.log(`上传活动ID ${activityId}，上传ID ${uploadId}`);
     }
 };
 
