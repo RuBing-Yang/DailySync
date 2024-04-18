@@ -1,7 +1,6 @@
 import fs from 'fs';
 
 const core = require('@actions/core');
-const { FilesManager } = require('turbodepot-node');
 import {
     DOWNLOAD_DIR,
     FILE_SUFFIX,
@@ -23,17 +22,22 @@ const unzipper = require('unzipper');
  * @param client
  */
 export const uploadGarminActivity = async (fitFilePath: string, client: GarminClientType): Promise<void> => {
-    let filesManager = new FilesManager();
-    const fileSize = filesManager.getFileSize(fitFilePath);
-    console.log(`下载文件夹 ${DOWNLOAD_DIR}，下载文件地址 ${fitFilePath}，文件大小 ${fileSize}`);
     if (!fs.existsSync(DOWNLOAD_DIR)) {
         fs.mkdirSync(DOWNLOAD_DIR);
+        console.warn("download directory not exist!");
+    } else if (!fs.existsSync(fitFilePath)) {
+        console.warn("file path not exist!");
+    } else {
+        const fileStat = fs.statSync("myfile.txt");
+        var fileSizeMb = fileStat.size / (1024*1024);
+        console.log(`下载文件夹 ${DOWNLOAD_DIR}，下载文件地址 ${fitFilePath}，文件大小 ${fileSizeMb} Mb`);
+
+        const upload = await client.uploadActivity(fitFilePath);
+        console.log('upload to garmin activity', upload);
+        const activityId = upload.detailedImportResult.successes[0].internalId;
+        const uploadId = upload.detailedImportResult.uploadId;
+        console.log(`上传活动ID ${activityId}，上传ID ${upload}`);
     }
-    const upload = await client.uploadActivity(fitFilePath);
-    console.log('upload to garmin activity', upload);
-    const activityId = upload.detailedImportResult.successes[0].internalId;
-    const uploadId = upload.detailedImportResult.uploadId;
-    console.log(`上传活动ID ${activityId}，上传ID ${upload}`);
 };
 
 /**

@@ -1,7 +1,7 @@
 name: Sync Garmin Global to Garmin CN
 
-# on:
-#   workflow_dispatch:
+on:
+  workflow_dispatch:
 #   schedule:
 #     #  每6小时检查一次
 #     - cron: "0 */6 * * *"
