@@ -31,6 +31,7 @@ export const getGaminCNClient = async (): Promise<GarminClientType> => {
         core.setFailed(errMsg);
         return Promise.reject(errMsg);
     }
+    console.log('GARMIN_USERNAME', GARMIN_USERNAME);
 
     const GCClient = new GarminConnect();
 

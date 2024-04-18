@@ -26,6 +26,7 @@ export const getGaminGlobalClient = async (): Promise<GarminClientType> => {
         core.setFailed(errMsg);
         return Promise.reject(errMsg);
     }
+    console.log('GARMIN_GLOBAL_USERNAME', GARMIN_GLOBAL_USERNAME);
 
     const GCClient = new GarminConnect();
 
