@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - uses: edertone/TurboDepot
+      - uses: edertone/TurboDepot@7.0.3
         with:
           node-version: '14'
           cache: 'yarn'
